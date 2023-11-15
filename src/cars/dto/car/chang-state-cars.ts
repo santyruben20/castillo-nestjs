@@ -3,11 +3,11 @@ import { CarDto } from "./car";
 import { PickType } from "@nestjs/swagger";
 
 
-export class PatchCarDto extends PickType(CarDto, 
+export class ChangStateCarDto extends PickType(CarDto, 
     [
-        'numeroPuertas',
-        'precio',
-        'modelo'
+        'numberDoors',
+        'price',
+        'color'
     ]
     )  {
    

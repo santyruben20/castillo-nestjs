@@ -1,29 +1,29 @@
-import { IsBoolean, IsDate, IsInt, IsNotEmpty, IsPositive, IsString, Matches, Max, Min } from "class-validator";
+import { IsBoolean, IsDate, IsInt, IsNotEmpty, IsPositive, IsString, Matches, Max, MaxLength, Min, MinLength } from "class-validator";
 
 export class CarDto {
+
+    @MinLength(5, {message:'El nombre debe tener minimo 5 caracteres'})
+    @MaxLength(30, {message:'El nombre debe tener maximo 30 caracteres'})
+    @IsNotEmpty({message:'El nombre es obligatorio'})
+    name:string;
 
     @IsNotEmpty({ message: 'este campo no puede ser nulo' })
     @IsInt({ message: 'El número de puertas debe ser un número entero' })
     @Min(2, { message: 'El carro debe tener al menos 2 puertas' })
     @Max(5, { message: 'El carro no puede tener más de 5 puertas' })
-    numeroPuertas: number;
+    numberDoors: number;
 
     @IsNotEmpty({ message: 'este campo no puede ser nulo' })
     @IsPositive({ message: 'El precio debe ser un número positivo' })
-    precio: number;
+    price: number;
 
     @IsNotEmpty({ message: 'este campo no puede ser nulo' })
     @IsBoolean({ message: 'El campo esNuevo debe ser un valor booleano' })
-    esNuevo: boolean;
+    new: boolean;
 
     @IsNotEmpty({ message: 'este campo no puede ser nulo' })
     @IsString({ message: 'este campo debe de ser de tipo string'})
-    @Matches(/^[A-Za-z0-9\s]+$/, { message: 'El modelo debe contener solo letras, números y espacios' })
-    modelo: string;
-
-    @IsNotEmpty({ message: 'este campo no puede ser nulo' })
-    @IsDate({message: 'este campo tiene que ser de tipo fecha'})
-    fecha: Date;
+    color: string;
 
 }
 
